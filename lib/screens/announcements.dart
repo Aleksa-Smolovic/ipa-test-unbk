@@ -9,6 +9,7 @@ import 'package:unbroken/models/announcement.dart';
 import 'package:unbroken/models/user.dart';
 import 'package:unbroken/services/auth_service.dart';
 import 'package:unbroken/util/error_messages.dart';
+import 'package:unbroken/util/global_constants.dart';
 
 class Announcements extends StatefulWidget {
   const Announcements({super.key});
@@ -141,20 +142,28 @@ class _AnnouncementListItemState extends State<AnnouncementListItem> {
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
-        color: const Color(0xff141414),
-        borderRadius: BorderRadius.circular(10.0),
-      ),
+          color: const Color(0xff141414),
+          borderRadius: BorderRadius.circular(10.0),
+          border: widget.item.isHighlighted
+              ? Border.all(color: GlobalConstants.appColor, width: 2.0)
+              : null),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(widget.item.title,
-                  style: GoogleFonts.poppins(
+              Flexible(
+                child: Text(widget.item.title,
+                    style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontSize: 16,
-                      fontWeight: FontWeight.w700)),
+                      fontWeight: FontWeight.w700,
+                    ),
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1),
+              ),
               if (isTextLong)
                 IconButton(
                   icon: Icon(

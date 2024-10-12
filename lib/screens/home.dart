@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:unbroken/screens/announcements.dart';
@@ -34,7 +36,8 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: Container(
           color: Colors.black,
           child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: EdgeInsets.fromLTRB(
+                  15, Platform.isIOS ? 20 : 10, 15, Platform.isIOS ? 30 : 10),
               child: GNav(
                 gap: 8,
                 backgroundColor: Colors.black,

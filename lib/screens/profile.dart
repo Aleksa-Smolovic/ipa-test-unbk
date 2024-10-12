@@ -48,12 +48,26 @@ class _ProfileState extends State<Profile> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Profile',
-                  style: GoogleFonts.poppins(
+              Row(
+                children: [
+                  Text(
+                    'Profile',
+                    style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontSize: 18,
-                      fontWeight: FontWeight.bold)),
-              Image.asset('assets/images/logo.png', width: 150)
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  IconButton(
+                    icon: const Icon(Icons.logout, color: Colors.white),
+                    onPressed: () {
+                      _logOut(context);
+                    },
+                  ),
+                ],
+              ),
+              Image.asset('assets/images/logo.png', width: 150),
             ],
           ),
         ),
@@ -190,10 +204,10 @@ class _ProfileState extends State<Profile> {
                                     ),
                                   ],
                                 ),
-                                const SizedBox(height: 20),
-                                LogOutButton(onPressed: () {
-                                  _logOut(context);
-                                })
+                                // const SizedBox(height: 20),
+                                // LogOutButton(onPressed: () {
+                                //   _logOut(context);
+                                // })
                               ],
                             )),
                       )
@@ -214,15 +228,16 @@ class _ProfileState extends State<Profile> {
                               color: const Color(0xffDA0000), fontSize: 16),
                         )),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(22, 5, 22, 22),
-                        // Optional padding at the bottom
-                        child: LogOutButton(
-                          onPressed: () {
-                            _logOut(context);
-                          },
-                        ),
-                      ),
+                      // TODO remove
+                      // Padding(
+                      //   padding: const EdgeInsets.fromLTRB(22, 5, 22, 22),
+                      //   // Optional padding at the bottom
+                      //   child: LogOutButton(
+                      //     onPressed: () {
+                      //       _logOut(context);
+                      //     },
+                      //   ),
+                      // ),
                     ],
                   ),
                 );
